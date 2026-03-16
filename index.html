@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nedza Capital Partners — Built by Entrepreneurs. Advising Entrepreneurs.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f35;
+    --navy-mid: #162d4a;
+    --navy-light: #1e3d5c;
+    --gold: #b8966a;
+    --gold-light: #d4b896;
+    --cream: #f8f5f0;
+    --off-white: #fdfcfb;
+    --mid-gray: #8a9aaa;
+    --text-dark: #1a2634;
+    --text-body: #3a4a5a;
+    --border: #ddd8d0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6vw;
+    height: 72px;
+    background: rgba(253,252,251,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(13,31,53,0.08); }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    text-decoration: none;
+  }
+  .nav-logo-primary {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-cta {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    padding: 0.55rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 6vw 80px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(30,61,92,0.7) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(184,150,106,0.08) 0%, transparent 60%);
+  }
+
+  .hero-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #f0ece6;
+    max-width: 780px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    margin-top: 2.2rem;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--mid-gray);
+    max-width: 500px;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s forwards;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-actions {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.9s forwards;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 1rem 2.4rem;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hero-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(138,154,170,0.6);
+  }
+  .scroll-line {
+    width: 36px;
+    height: 1px;
+    background: rgba(138,154,170,0.4);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 110px 6vw;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  h2.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--navy);
+    max-width: 640px;
+  }
+
+  h2.section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .body-text {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--text-body);
+    max-width: 560px;
+  }
+
+  /* ── WHAT WE DO ── */
+  .what-we-do { background: var(--off-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--off-white);
+    padding: 2.5rem 2.2rem;
+    transition: background 0.25s;
+  }
+  .service-card:hover { background: var(--cream); }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .service-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.9rem;
+  }
+
+  .service-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--text-body);
+  }
+
+  .ev-band {
+    margin-top: 4rem;
+    padding: 2.5rem 3rem;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .ev-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .ev-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: #f0ece6;
+    line-height: 1;
+  }
+
+  .ev-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  .ev-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ── WHY NEDZA ── */
+  .why-nedza { background: var(--cream); }
+
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    align-items: start;
+    margin-top: 3.5rem;
+  }
+
+  .why-left {}
+
+  .quote-block {
+    border-left: 2px solid var(--gold);
+    padding: 1.2rem 0 1.2rem 2rem;
+    margin: 2.5rem 0;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+
+  .why-right {}
+
+  .differentiator-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .diff-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .diff-item:first-child { border-top: 1px solid var(--border); }
+
+  .diff-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .diff-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .diff-text strong {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .diff-text p {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-body);
+  }
+
+  /* ── WHO WE WORK WITH ── */
+  .who-we-work { background: var(--off-white); }
+
+  .who-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6vw;
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+
+  .profile-card {
+    background: var(--navy);
+    padding: 3rem 2.8rem;
+  }
+
+  .profile-card-title {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+
+  .profile-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--mid-gray);
+  }
+
+  .metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #f0ece6;
+  }
+
+  .client-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .client-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.83rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  .client-bullets li::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── APPROACH ── */
+  .approach { background: var(--cream); }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+  }
+
+  .pillar {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.25s;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar:hover { background: rgba(184,150,106,0.04); }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(184,150,106,0.2);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .pillar-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-body);
+  }
+
+  .pillar-accent {
+    position: absolute;
+    top: 0; left: 2.5rem;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* ── LEADERSHIP ── */
+  .leadership { background: var(--off-white); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .team-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .team-card:hover { box-shadow: 0 12px 40px rgba(13,31,53,0.08); }
+
+  .team-photo {
+    height: 340px;
+    background: #c8cdd4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .chris-photo img {
+    object-position: center 8%;
+  }
+
+  .mike-photo img {
+    object-position: center 20%;
+  }
+
+  .team-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 55%, rgba(13,31,53,0.18) 100%);
+    pointer-events: none;
+  }
+
+  .team-info {
+    padding: 2rem 2.2rem 2.2rem;
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+
+  .team-title {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+  }
+
+  .team-bio {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-body);
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 110px 6vw;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,106,0.05) 0%, transparent 70%);
+  }
+
+  .cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+  .cta-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+
+  .cta-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: #f0ece6;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-sub {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--mid-gray);
+    margin-bottom: 3rem;
+  }
+
+  .cta-rule {
+    width: 50px;
+    height: 1px;
+    background: rgba(184,150,106,0.3);
+    margin: 0 auto 3rem;
+  }
+
+  .btn-outline-light {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #f0ece6;
+    border: 1px solid rgba(240,236,230,0.3);
+    padding: 1rem 2.8rem;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .btn-outline-light:hover {
+    border-color: var(--gold);
+    background: rgba(184,150,106,0.08);
+    color: var(--gold-light);
+  }
+
+  /* ── CONTACT FORM ── */
+  .contact-form {
+    margin-top: 2.8rem;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group.full {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #f0ece6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(138,154,170,0.5);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .form-group select option {
+    background: var(--navy);
+    color: #f0ece6;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .form-note {
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: rgba(138,154,170,0.6);
+    letter-spacing: 0.04em;
+  }
+
+  .btn-submit {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    border: none;
+    padding: 1rem 2.4rem;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .form-success {
+    display: none;
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(184,150,106,0.3);
+    background: rgba(184,150,106,0.06);
+  }
+
+  .form-success p {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 600px) {
+    .contact-form { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .form-submit { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #09182a;
+    padding: 3rem 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(240,236,230,0.7);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-tagline {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: rgba(138,154,170,0.5);
+  }
+
+  .footer-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-contact {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(138,154,170,0.6);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-contact:hover { color: var(--gold-light); }
+
+  .footer-copy {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgba(138,154,170,0.3);
+    margin-top: 0.3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .why-layout { grid-template-columns: 1fr; }
+    .who-layout { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .pillar { border-right: none; border-bottom: 1px solid var(--border); }
+    .pillar:last-child { border-bottom: none; }
+    .team-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .ev-divider { display: none; }
+  }
+
+  @media (max-width: 540px) {
+    .ev-band { padding: 2rem; }
+    .section-inner { padding: 72px 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-primary">Nedza Capital Partners</span>
+    <span class="nav-logo-sub">M&A Advisory</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what-we-do">Services</a></li>
+    <li><a href="#why-nedza">Our Approach</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Start a Conversation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-rule"></div>
+  <p class="hero-eyebrow">Nedza Capital Partners · Lower Middle Market M&A</p>
+  <h1>Built by <em>entrepreneurs.</em><br>Advising entrepreneurs.</h1>
+  <p class="hero-sub">Nedza Capital Partners advises founders of lower middle-market businesses on strategic sales, recapitalizations, and liquidity events.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Start a Conversation</a>
+    <span class="hero-scroll-hint"><span class="scroll-line"></span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what-we-do" id="what-we-do">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Strategic advisory for <em>the transaction</em> that matters most.</h2>
+    </div>
+
+    <div class="reveal" style="transition-delay: 0.15s; margin-top: 2rem;">
+      <p class="body-text">We advise founders and owner-operators of lower middle-market companies through the most consequential decision of their business life. Our mandate is singular: secure the best possible outcome — in price, terms, timing, and fit.</p>
+    </div>
+
+    <div class="services-grid reveal" style="transition-delay: 0.25s;">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <div class="service-name">Strategic Sales</div>
+        <p class="service-desc">Full-process sell-side advisory targeting the right buyers — strategic acquirers, private equity, or family offices — and negotiating terms that reflect the true value of your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <div class="service-name">Recapitalizations</div>
+        <p class="service-desc">Partial liquidity events that allow founders to de-risk personal wealth while retaining meaningful equity upside in the next chapter of growth.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-name">Liquidity Events</div>
+        <p class="service-desc">Structured events designed to create liquidity for founders, partners, or early stakeholders — executed with discretion and on the founder's timeline.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-name">Strategic Partnerships</div>
+        <p class="service-desc">Advisory on minority investments, joint ventures, and commercial partnerships that create strategic leverage without a full sale.</p>
+      </div>
+    </div>
+
+    <div class="ev-band reveal" style="transition-delay: 0.35s;">
+      <div class="ev-stat">
+        <span class="ev-value">$25M – $100M</span>
+        <span class="ev-label">Enterprise Value Focus</span>
+      </div>
+      <div class="ev-divider"></div>
+      <div class="ev-stat">
+        <span class="ev-value">$5M – $20M</span>
+        <span class="ev-label">Typical EBITDA Range</span>
+      </div>
+      <div class="ev-divider"></div>
+      <div class="ev-stat">
+        <span class="ev-value">Founder-Led</span>
+        <span class="ev-label">Client Focus</span>
+      </div>
+      <div class="ev-divider"></div>
+      <div class="ev-stat">
+        <span class="ev-value">Lower Middle Market</span>
+        <span class="ev-label">Transaction Specialty</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NEDZA -->
+<section class="why-nedza" id="why-nedza">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Why Nedza Capital</p>
+      <h2 class="section-title">Advisors who have <em>sat in your seat.</em></h2>
+    </div>
+
+    <div class="why-layout">
+      <div class="why-left">
+        <p class="body-text reveal" style="transition-delay: 0.1s;">Most M&A advisory firms are staffed by professionals with backgrounds in investment banking, law, or accounting. Technically capable, certainly. But many have never built a business, navigated a difficult market, or faced the personal weight of an exit decision.</p>
+
+        <div class="quote-block reveal" style="transition-delay: 0.2s;">
+          <p class="quote-text">"A transaction is not simply about price — it is about timing, alignment, legacy, and what comes next."</p>
+        </div>
+
+        <p class="body-text reveal" style="transition-delay: 0.3s;">Nedza Capital is led by experienced entrepreneurs and operators. We have built companies, scaled operations, managed risk, navigated acquisitions, and experienced every stage of the founder journey. That perspective changes how we work — and what we look for in a buyer.</p>
+      </div>
+
+      <div class="why-right reveal" style="transition-delay: 0.2s;">
+        <ul class="differentiator-list">
+          <li class="diff-item">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="diff-text">
+              <strong>Entrepreneurial Foundation</strong>
+              <p>Our advisors have built and operated businesses — not just advised on them. We understand the years of work, risk, and sacrifice that brought you to this moment.</p>
+            </div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div class="diff-text">
+              <strong>Transaction Timing</strong>
+              <p>Timing a transaction requires operational intuition, not just financial modeling. We advise on when to go to market and how to maximize positioning before you do.</p>
+            </div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="diff-text">
+              <strong>Legacy & Leadership</strong>
+              <p>We help founders think beyond the closing date — evaluating buyers on cultural alignment, management continuity, and the long-term success of what you've built.</p>
+            </div>
+          </li>
+          <li class="diff-item">
+            <div class="diff-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="diff-text">
+              <strong>Disciplined Process</strong>
+              <p>We run a structured, competitive market process that creates leverage — while protecting your confidentiality and managing organizational disruption throughout.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="who-we-work" id="who-we-work">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Who We Work With</p>
+      <h2 class="section-title">Built for founders at an <em>inflection point.</em></h2>
+    </div>
+
+    <div class="who-layout">
+      <div class="reveal" style="transition-delay: 0.1s;">
+        <p class="body-text">Our clients are typically founders and owner-operators who have spent a decade or more building a profitable, defensible business. They are not first-time sellers. They understand that the right transaction partner matters as much as the price.</p>
+
+        <div style="margin-top: 2.5rem;">
+          <ul class="client-bullets">
+            <li>Founder-led businesses approaching a strategic inflection point</li>
+            <li>Lower middle-market companies with $25M–$100M enterprise value</li>
+            <li>Profitable businesses with $5M–$20M EBITDA</li>
+            <li>Companies with strong management teams and defensible market positions</li>
+            <li>Owners considering a sale, recapitalization, or minority investment</li>
+            <li>Businesses preparing for a first institutional transaction</li>
+            <li>Owners who want a trusted strategic advisor, not a transaction factory</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="profile-card reveal" style="transition-delay: 0.25s;">
+        <div class="profile-card-title">Typical Client Profile</div>
+        <div class="profile-metrics">
+          <div class="metric">
+            <span class="metric-label">Enterprise Value</span>
+            <span class="metric-value">$25M – $100M</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">EBITDA</span>
+            <span class="metric-value">$5M – $20M</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Ownership Structure</span>
+            <span class="metric-value">Founder / Family</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Years in Operation</span>
+            <span class="metric-value">10 – 30+ Years</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Stage</span>
+            <span class="metric-value">Pre-Transaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Our Approach</p>
+      <h2 class="section-title">Three pillars of a <em>successful outcome.</em></h2>
+    </div>
+
+    <div class="reveal" style="margin-top: 1.5rem; transition-delay: 0.1s;">
+      <p class="body-text">Every transaction we advise on is structured around three principles — from the first conversation to the closing table.</p>
+    </div>
+
+    <div class="pillars reveal" style="transition-delay: 0.2s;">
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">I</div>
+        <div class="pillar-name">Strategic Preparation</div>
+        <p class="pillar-desc">A successful transaction begins 12–18 months before going to market. We work with founders to understand their business, identify value drivers, and prepare positioning that resonates with the right buyers. First impressions in an M&A process are permanent.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">II</div>
+        <div class="pillar-name">Thoughtful Market Process</div>
+        <p class="pillar-desc">We run a disciplined, structured process designed to create competitive tension among qualified buyers — while protecting confidentiality and minimizing disruption to your business and team. The right process surfaces the right buyers.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">III</div>
+        <div class="pillar-name">Alignment Beyond Price</div>
+        <p class="pillar-desc">Price is one variable. Earnouts, representations, management roles, brand continuity, and cultural alignment are equally consequential. We negotiate every dimension of a transaction with the same rigor — and advise on the full picture of outcomes, not just the headline number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership" id="leadership">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Leadership</p>
+      <h2 class="section-title">Principals with <em>firsthand</em> experience.</h2>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal" style="transition-delay: 0.1s;">
+        <div class="team-photo chris-photo">
+          <img src="chris-nedza.png" alt="Chris Nedza">
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Chris Nedza</div>
+          <div class="team-title">Founder &amp; Managing Partner</div>
+          <p class="team-bio">Chris founded Nedza Capital Partners after years as an entrepreneur and operator in the lower middle market. He has built companies from early stage through exit, navigated complex recapitalizations, and sat across the table from acquirers as both buyer and seller.<br><br>His advisory work is shaped by personal experience with the weight of the founder's decision — the operational realities, the timing pressures, and the human dimensions that no spreadsheet captures. Chris brings this perspective to every engagement, advising founders not just on the mechanics of a transaction but on the full context of what a sale or recapitalization means for their business and their life.</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal" style="transition-delay: 0.2s;">
+        <div class="team-photo mike-photo">
+          <img src="mike-hill.jpg" alt="Mike Hill">
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Mike Hill</div>
+          <div class="team-title">Senior Advisor</div>
+          <p class="team-bio">Mike brings decades of experience as an operator, strategic acquirer, and board advisor to lower middle-market companies. His career spans multiple industries and transaction types — from growth-stage acquisitions to complex ownership transitions involving family businesses and multi-generational leadership.<br><br>He has managed the integration of acquired businesses, led management buyouts, and advised business owners through every stage of the transaction lifecycle. Mike's operational depth gives founders a credible, experienced voice at every point in the process — from initial positioning through negotiation and close.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner reveal">
+    <p class="cta-eyebrow">Start a Conversation</p>
+    <h2 class="cta-headline">Considering the future of your business?</h2>
+    <div class="cta-rule"></div>
+    <p class="cta-sub">All initial conversations are confidential. There is no commitment, no pitch, and no pressure — just a frank exchange with advisors who understand what you've built and what this decision means.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contact-form">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><input name="bot-field"></p>
+
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="First and last name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Company name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="revenue">Approximate Revenue</label>
+        <select id="revenue" name="revenue">
+          <option value="" disabled selected>Select a range</option>
+          <option>Under $5M</option>
+          <option>$5M – $15M</option>
+          <option>$15M – $30M</option>
+          <option>$30M – $75M</option>
+          <option>Over $75M</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label for="message">What's on your mind?</label>
+        <textarea id="message" name="message" placeholder="Tell us briefly about your business and what you're considering..."></textarea>
+      </div>
+
+      <div class="form-submit">
+        <span class="form-note">All inquiries are handled with complete discretion.</span>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </div>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <p>Thank you — we've received your message and will be in touch shortly. All conversations are confidential.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Nedza Capital Partners</div>
+    <div class="footer-tagline" style="margin-top: 0.4rem;">Built by entrepreneurs. Advising entrepreneurs.</div>
+  </div>
+  <div class="footer-right">
+    <a href="/cdn-cgi/l/email-protection#c3a0abb1aab083ada6a7b9a2a0a2b3aab7a2afeda0acae" class="footer-contact"><span class="__cf_email__" data-cfemail="94f7fce6fde7d4faf1f0eef5f7f5e4fde0f5f8baf7fbf9">[email&#160;protected]</span></a>
+    <span class="footer-copy">&copy; 2025 Nedza Capital Partners. All rights reserved.</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav scroll shadow
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Netlify form success handling
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
+ 
