@@ -924,6 +924,136 @@
     .ev-band { padding: 2rem; }
     .section-inner { padding: 72px 5vw; }
   }
+  /* Readability patch */
+body {
+  font-size: 18px;
+}
+
+.body-text,
+.service-desc,
+.diff-text p,
+.client-bullets li,
+.pillar-desc,
+.team-bio,
+.cta-sub,
+.form-success p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.section-label,
+.cta-eyebrow,
+.team-title,
+.service-name,
+.pillar-name,
+.profile-card-title,
+.metric-label,
+.form-group label,
+.footer-tagline,
+.footer-copy,
+.nav-links a,
+.nav-cta,
+.hero-eyebrow {
+  font-size: 0.75rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.footer-contact {
+  font-size: 0.95rem;
+}
+
+.form-note {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .hero {
+    padding: 110px 6vw 56px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    line-height: 1.12;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 100%;
+  }
+
+  h2.section-title {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    line-height: 1.2;
+  }
+
+  .body-text,
+  .service-desc,
+  .diff-text p,
+  .client-bullets li,
+  .pillar-desc,
+  .team-bio,
+  .cta-sub,
+  .form-success p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .section-label,
+  .cta-eyebrow,
+  .team-title,
+  .service-name,
+  .pillar-name,
+  .profile-card-title,
+  .metric-label,
+  .form-group label,
+  .footer-tagline,
+  .footer-copy,
+  .nav-links a,
+  .nav-cta,
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  .btn-primary,
+  .btn-submit,
+  .btn-outline-light,
+  .nav-cta {
+    font-size: 0.8rem;
+    padding: 1rem 1.6rem;
+  }
+
+  .team-info,
+  .service-card,
+  .pillar,
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .team-photo {
+    height: 300px;
+  }
+}
 </style>
 </head>
 <body>
