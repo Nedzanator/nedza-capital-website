@@ -894,11 +894,18 @@
   }
 
   .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .js .reveal {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
@@ -1257,12 +1264,14 @@
     <div class="footer-tagline" style="margin-top: 0.4rem;">Built by entrepreneurs. Advising entrepreneurs.</div>
   </div>
   <div class="footer-right">
-    <a href="/cdn-cgi/l/email-protection#c3a0abb1aab083ada6a7b9a2a0a2b3aab7a2afeda0acae" class="footer-contact"><span class="__cf_email__" data-cfemail="94f7fce6fde7d4faf1f0eef5f7f5e4fde0f5f8baf7fbf9">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#91f2f9e3f8e2d1fff4f5ebf0f2f0e1f8e5f0fdbff2fefc" class="footer-contact"><span class="__cf_email__" data-cfemail="07646f756e74476962637d666466776e73666b2964686a">[email&#160;protected]</span></a>
     <span class="footer-copy">&copy; 2025 Nedza Capital Partners. All rights reserved.</span>
   </div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.documentElement.classList.add('js');
+
   // Nav scroll shadow
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
