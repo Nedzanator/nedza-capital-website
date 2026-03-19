@@ -1,1155 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nedza Capital Partners — Built by Entrepreneurs. Advising Entrepreneurs.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1f35;
-    --navy-mid: #162d4a;
-    --navy-light: #1e3d5c;
-    --gold: #b8966a;
-    --gold-light: #d4b896;
-    --cream: #f8f5f0;
-    --off-white: #fdfcfb;
-    --mid-gray: #8a9aaa;
-    --text-dark: #1a2634;
-    --text-body: #3a4a5a;
-    --border: #ddd8d0;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--off-white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 6vw;
-    height: 72px;
-    background: rgba(253,252,251,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    transition: box-shadow 0.3s;
-  }
-  nav.scrolled { box-shadow: 0 2px 24px rgba(13,31,53,0.08); }
-
-  .nav-logo {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    text-decoration: none;
-  }
-  .nav-logo-primary {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 500;
-    color: var(--navy);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
-  .nav-logo-sub {
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-body);
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--navy); }
-
-  .nav-cta {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--navy);
-    border: 1px solid var(--navy);
-    padding: 0.55rem 1.4rem;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-  .nav-cta:hover { background: var(--navy); color: var(--off-white); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 6vw 80px;
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 70% 60% at 80% 50%, rgba(30,61,92,0.7) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(184,150,106,0.08) 0%, transparent 60%);
-  }
-
-  .hero-rule {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.35s forwards;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 5.5vw, 5.2rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: #f0ece6;
-    max-width: 780px;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.5s forwards;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
-
-  .hero-sub {
-    margin-top: 2.2rem;
-    font-size: 0.88rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--mid-gray);
-    max-width: 500px;
-    letter-spacing: 0.02em;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.7s forwards;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-actions {
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.9s forwards;
-    position: relative;
-    z-index: 1;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--navy);
-    background: var(--gold);
-    padding: 1rem 2.4rem;
-    text-decoration: none;
-    transition: background 0.25s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .hero-scroll-hint {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(138,154,170,0.6);
-  }
-  .scroll-line {
-    width: 36px;
-    height: 1px;
-    background: rgba(138,154,170,0.4);
-  }
-
-  /* ── SECTION WRAPPER ── */
-  section { position: relative; }
-
-  .section-inner {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 110px 6vw;
-  }
-
-  .section-label {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .section-label::after {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-  }
-
-  h2.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 400;
-    line-height: 1.18;
-    color: var(--navy);
-    max-width: 640px;
-  }
-
-  h2.section-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .body-text {
-    font-size: 0.88rem;
-    font-weight: 300;
-    line-height: 2;
-    color: var(--text-body);
-    max-width: 560px;
-  }
-
-  /* ── WHAT WE DO ── */
-  .what-we-do { background: var(--off-white); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 4rem;
-    border: 1px solid var(--border);
-  }
-
-  .service-card {
-    background: var(--off-white);
-    padding: 2.5rem 2.2rem;
-    transition: background 0.25s;
-  }
-  .service-card:hover { background: var(--cream); }
-
-  .service-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--border);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .service-name {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 0.9rem;
-  }
-
-  .service-desc {
-    font-size: 0.83rem;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--text-body);
-  }
-
-  .ev-band {
-    margin-top: 4rem;
-    padding: 2.5rem 3rem;
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .ev-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .ev-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
-    font-weight: 300;
-    color: #f0ece6;
-    line-height: 1;
-  }
-
-  .ev-label {
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mid-gray);
-  }
-
-  .ev-divider {
-    width: 1px;
-    height: 50px;
-    background: rgba(255,255,255,0.1);
-  }
-
-  /* ── WHY NEDZA ── */
-  .why-nedza { background: var(--cream); }
-
-  .why-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6vw;
-    align-items: start;
-    margin-top: 3.5rem;
-  }
-
-  .why-left {}
-
-  .quote-block {
-    border-left: 2px solid var(--gold);
-    padding: 1.2rem 0 1.2rem 2rem;
-    margin: 2.5rem 0;
-  }
-
-  .quote-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--navy);
-  }
-
-  .why-right {}
-
-  .differentiator-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .diff-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    padding: 1.6rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .diff-item:first-child { border-top: 1px solid var(--border); }
-
-  .diff-icon {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    border: 1px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
-  }
-
-  .diff-icon svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--gold);
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .diff-text strong {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 0.35rem;
-  }
-
-  .diff-text p {
-    font-size: 0.82rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--text-body);
-  }
-
-  /* ── WHO WE WORK WITH ── */
-  .who-we-work { background: var(--off-white); }
-
-  .who-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 6vw;
-    align-items: center;
-    margin-top: 3.5rem;
-  }
-
-  .profile-card {
-    background: var(--navy);
-    padding: 3rem 2.8rem;
-  }
-
-  .profile-card-title {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.8rem;
-  }
-
-  .profile-metrics {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .metric {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .metric-label {
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--mid-gray);
-  }
-
-  .metric-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: #f0ece6;
-  }
-
-  .client-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .client-bullets li {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    font-size: 0.83rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--text-body);
-  }
-
-  .client-bullets li::before {
-    content: '';
-    width: 20px;
-    height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  /* ── APPROACH ── */
-  .approach { background: var(--cream); }
-
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 4rem;
-    border: 1px solid var(--border);
-  }
-
-  .pillar {
-    padding: 3rem 2.5rem;
-    border-right: 1px solid var(--border);
-    position: relative;
-    transition: background 0.25s;
-  }
-  .pillar:last-child { border-right: none; }
-  .pillar:hover { background: rgba(184,150,106,0.04); }
-
-  .pillar-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: rgba(184,150,106,0.2);
-    line-height: 1;
-    margin-bottom: 1.2rem;
-  }
-
-  .pillar-name {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 1rem;
-  }
-
-  .pillar-desc {
-    font-size: 0.83rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--text-body);
-  }
-
-  .pillar-accent {
-    position: absolute;
-    top: 0; left: 2.5rem;
-    width: 24px;
-    height: 2px;
-    background: var(--gold);
-  }
-
-  /* ── LEADERSHIP ── */
-  .leadership { background: var(--off-white); }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    margin-top: 4rem;
-  }
-
-  .team-card {
-    border: 1px solid var(--border);
-    overflow: hidden;
-    transition: box-shadow 0.3s;
-  }
-  .team-card:hover { box-shadow: 0 12px 40px rgba(13,31,53,0.08); }
-
-  .team-photo {
-    height: 340px;
-    background: #c8cdd4;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .team-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(15%) contrast(1.05);
-  }
-
-  .chris-photo img {
-    object-position: center 8%;
-  }
-
-  .mike-photo img {
-    object-position: center 20%;
-  }
-
-  .team-photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 55%, rgba(13,31,53,0.18) 100%);
-    pointer-events: none;
-  }
-
-  .team-info {
-    padding: 2rem 2.2rem 2.2rem;
-  }
-
-  .team-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--navy);
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
-  }
-
-  .team-title {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.4rem;
-  }
-
-  .team-bio {
-    font-size: 0.82rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--text-body);
-  }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    background: var(--navy);
-    padding: 110px 6vw;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,106,0.05) 0%, transparent 70%);
-  }
-
-  .cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-
-  .cta-eyebrow {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.8rem;
-  }
-
-  .cta-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.25;
-    color: #f0ece6;
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-sub {
-    font-size: 0.85rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--mid-gray);
-    margin-bottom: 3rem;
-  }
-
-  .cta-rule {
-    width: 50px;
-    height: 1px;
-    background: rgba(184,150,106,0.3);
-    margin: 0 auto 3rem;
-  }
-
-  .btn-outline-light {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #f0ece6;
-    border: 1px solid rgba(240,236,230,0.3);
-    padding: 1rem 2.8rem;
-    text-decoration: none;
-    transition: border-color 0.25s, background 0.25s;
-  }
-  .btn-outline-light:hover {
-    border-color: var(--gold);
-    background: rgba(184,150,106,0.08);
-    color: var(--gold-light);
-  }
-
-  /* ── CONTACT FORM ── */
-  .contact-form {
-    margin-top: 2.8rem;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .form-group.full {
-    grid-column: 1 / -1;
-  }
-
-  .form-group label {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #f0ece6;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 300;
-    padding: 0.85rem 1rem;
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-    width: 100%;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder {
-    color: rgba(138,154,170,0.5);
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--gold);
-    background: rgba(255,255,255,0.07);
-  }
-
-  .form-group select option {
-    background: var(--navy);
-    color: #f0ece6;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .form-submit {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-  }
-
-  .form-note {
-    font-size: 0.65rem;
-    font-weight: 300;
-    color: rgba(138,154,170,0.6);
-    letter-spacing: 0.04em;
-  }
-
-  .btn-submit {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--navy);
-    background: var(--gold);
-    border: none;
-    padding: 1rem 2.4rem;
-    cursor: pointer;
-    transition: background 0.25s, transform 0.2s;
-  }
-
-  .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .form-success {
-    display: none;
-    margin-top: 2rem;
-    padding: 1.5rem 2rem;
-    border: 1px solid rgba(184,150,106,0.3);
-    background: rgba(184,150,106,0.06);
-  }
-
-  .form-success p {
-    font-size: 0.82rem;
-    font-weight: 300;
-    color: var(--gold-light);
-    line-height: 1.8;
-  }
-
-  @media (max-width: 600px) {
-    .contact-form { grid-template-columns: 1fr; }
-    .form-group.full { grid-column: 1; }
-    .form-submit { flex-direction: column; align-items: flex-start; }
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #09182a;
-    padding: 3rem 6vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgba(240,236,230,0.7);
-    letter-spacing: 0.04em;
-  }
-
-  .footer-tagline {
-    font-size: 0.62rem;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    color: rgba(138,154,170,0.5);
-  }
-
-  .footer-right {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer-contact {
-    font-size: 0.72rem;
-    font-weight: 400;
-    color: rgba(138,154,170,0.6);
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-contact:hover { color: var(--gold-light); }
-
-  .footer-copy {
-    font-size: 0.6rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: rgba(138,154,170,0.3);
-    margin-top: 0.3rem;
-  }
-
-  /* ── DIVIDER ── */
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-  .js .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .js .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .why-layout { grid-template-columns: 1fr; }
-    .who-layout { grid-template-columns: 1fr; }
-    .pillars { grid-template-columns: 1fr; }
-    .pillar { border-right: none; border-bottom: 1px solid var(--border); }
-    .pillar:last-child { border-bottom: none; }
-    .team-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .ev-divider { display: none; }
-  }
-
-  @media (max-width: 540px) {
-    .ev-band { padding: 2rem; }
-    .section-inner { padding: 72px 5vw; }
-  }
-  /* Stronger readability + stronger gold accents */
-
-body {
-  font-size: 19px;
-}
-
-.hero h1 {
-  font-size: clamp(3rem, 6vw, 5.6rem);
-  line-height: 1.08;
-}
-
-.hero-sub {
-  font-size: 1.12rem;
-  line-height: 1.85;
-  color: #b9c4d0;
-  max-width: 620px;
-}
-
-h2.section-title {
-  font-size: clamp(2.3rem, 4vw, 3.5rem);
-  line-height: 1.16;
-}
-
-.body-text,
-.service-desc,
-.diff-text p,
-.client-bullets li,
-.pillar-desc,
-.team-bio,
-.cta-sub,
-.form-success p {
-  font-size: 1.08rem;
-  line-height: 1.9;
-  color: #33475b;
-}
-
-.section-label,
-.cta-eyebrow,
-.team-title,
-.service-name,
-.pillar-name,
-.profile-card-title,
-.metric-label,
-.form-group label,
-.footer-tagline,
-.footer-copy,
-.nav-links a,
-.nav-cta,
-.hero-eyebrow {
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
-}
-
-.nav-logo-primary {
-  font-size: 1.5rem;
-}
-
-.nav-logo-sub {
-  font-size: 0.68rem;
-}
-
-.btn-primary,
-.btn-submit,
-.btn-outline-light,
-.nav-cta {
-  font-size: 0.78rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select,
-.footer-contact {
-  font-size: 1rem;
-}
-
-.form-note {
-  font-size: 0.8rem;
-}
-
-/* stronger gold */
-.section-label,
-.cta-eyebrow,
-.team-title,
-.service-name,
-.pillar-name,
-.profile-card-title,
-.hero-eyebrow,
-.nav-logo-sub,
-.ev-label {
-  color: #a97b2d;
-}
-
-.hero h1 em,
-.quote-text,
-.diff-icon svg {
-  color: #b88933;
-  stroke: #b88933;
-}
-
-.hero-rule,
-.section-label::after,
-.client-bullets li::before,
-.pillar-accent,
-.scroll-line {
-  background: #b88933;
-}
-
-.diff-icon {
-  border-color: #b88933;
-}
-
-.service-number {
-  color: rgba(184, 137, 51, 0.42);
-}
-
-.pillar-number {
-  color: rgba(184, 137, 51, 0.38);
-}
-
-.ev-value {
-  color: #f6efe5;
-}
-
-.ev-label {
-  color: #c39a52;
-}
-
-.metric-value {
-  color: #f3ece2;
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 19px;
-  }
-
-  .hero {
-    padding: 118px 6vw 60px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.7rem, 10vw, 3.8rem);
-    line-height: 1.1;
-  }
-
-  .hero-sub {
-    font-size: 1.12rem;
-    line-height: 1.8;
-    max-width: 100%;
-  }
-
-  h2.section-title {
-    font-size: clamp(2.2rem, 8vw, 2.9rem);
-    line-height: 1.18;
-  }
-
-  .body-text,
-  .service-desc,
-  .diff-text p,
-  .client-bullets li,
-  .pillar-desc,
-  .team-bio,
-  .cta-sub,
-  .form-success p {
-    font-size: 1.06rem;
-    line-height: 1.8;
-  }
-
-  .section-label,
-  .cta-eyebrow,
-  .team-title,
-  .service-name,
-  .pillar-name,
-  .profile-card-title,
-  .metric-label,
-  .form-group label,
-  .footer-tagline,
-  .footer-copy,
-  .nav-links a,
-  .nav-cta,
-  .hero-eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-  }
-
-  .service-number {
-    font-size: 3rem;
-    color: rgba(184, 137, 51, 0.5);
-  }
-
-  .pillar-number {
-    font-size: 3.6rem;
-    color: rgba(184, 137, 51, 0.46);
-  }
-
-  .team-name {
-    font-size: 1.85rem;
-  }
-
-  .team-info,
-  .service-card,
-  .pillar,
-  .profile-card {
-    padding: 1.75rem;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    font-size: 16px;
-    padding: 1rem;
-  }
-
-  .btn-primary,
-  .btn-submit,
-  .btn-outline-light,
-  .nav-cta {
-    font-size: 0.84rem;
-    padding: 1rem 1.6rem;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nedza Capital Partners — Built by Entrepreneurs. Advising Entrepreneurs.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1f35;
+      --navy-mid: #162d4a;
+      --navy-light: #1e3d5c;
+      --gold: #b88933;
+      --gold-soft: #a97b2d;
+      --gold-light: #d4b896;
+      --cream: #f8f5f0;
+      --off-white: #fdfcfb;
+      --mid-gray: #8a9aaa;
+      --text-dark: #1a2634;
+      --text-body: #33475b;
+      --border: #ddd8d0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      font-size: 19px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6vw;
+      height: 72px;
+      background: rgba(253, 252, 251, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(13, 31, 53, 0.08); }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      text-decoration: none;
+    }
+    .nav-logo-primary {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .nav-logo-sub {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-body);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-cta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--navy); color: var(--off-white); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 6vw 80px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(30, 61, 92, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(184, 137, 51, 0.08) 0%, transparent 60%);
+    }
+    .hero-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s forwards;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: #f0ece6;
+      max-width: 780px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s forwards;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      margin-top: 2.2rem;
+      font-size: 1.12rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #b9c4d0;
+      max-width: 620px;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s forwards;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-actions {
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .btn-primary,
+    .btn-submit,
+    .btn-outline-light {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .btn-primary,
+    .btn-submit {
+      color: var(--navy);
+      background: var(--gold);
+      padding: 1rem 2rem;
+      border: none;
+    }
+    .btn-primary:hover,
+    .btn-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+    .btn-outline-light {
+      color: #f0ece6;
+      border: 1px solid rgba(240, 236, 230, 0.3);
+      padding: 1rem 2rem;
+    }
+    .btn-outline-light:hover {
+      border-color: var(--gold);
+      background: rgba(184, 137, 51, 0.08);
+      color: var(--gold-light);
+    }
+
+    .hero-scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(138, 154, 170, 0.7);
+    }
+    .scroll-line {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    section { position: relative; }
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 110px 6vw;
+    }
+
+    .section-label,
+    .cta-eyebrow,
+    .team-title,
+    .service-name,
+    .pillar-name,
+    .profile-card-title,
+    .metric-label,
+    .form-group label,
+    .footer-tagline {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .section-label {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    h2.section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.3rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.16;
+      color: var(--navy);
+      max-width: 720px;
+    }
+    h2.section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .body-text,
+    .service-desc,
+    .diff-text p,
+    .client-bullets li,
+    .pillar-desc,
+    .team-bio,
+    .cta-sub,
+    .form-success p {
+      font-size: 1.08rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-body);
+    }
+
+    .what-we-do { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+    .service-card {
+      background: var(--off-white);
+      padding: 2.5rem 2.2rem;
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: var(--cream); }
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: rgba(184, 137, 51, 0.42);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .service-name { margin-bottom: 0.9rem; }
+
+    .ev-band {
+      margin-top: 4rem;
+      padding: 2.5rem 3rem;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ev-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .ev-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #f6efe5;
+      line-height: 1;
+    }
+    .ev-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c39a52;
+    }
+    .ev-divider {
+      width: 1px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .why-nedza { background: var(--cream); }
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+    .quote-block {
+      border-left: 2px solid var(--gold);
+      padding: 1.2rem 0 1.2rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--gold);
+    }
+    .differentiator-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .diff-item:first-child { border-top: 1px solid var(--border); }
+    .diff-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .diff-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .diff-text strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .who-we-work { background: var(--off-white); }
+    .who-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6vw;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+    .profile-card {
+      background: var(--navy);
+      padding: 3rem 2.8rem;
+    }
+    .profile-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .metric-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #f3ece2;
+    }
+    .client-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .client-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .client-bullets li::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .approach { background: var(--cream); }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+    .pillar {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.25s;
+    }
+    .pillar:last-child { border-right: none; }
+    .pillar:hover { background: rgba(184, 150, 106, 0.04); }
+    .pillar-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: rgba(184, 137, 51, 0.38);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .pillar-accent {
+      position: absolute;
+      top: 0; left: 2.5rem;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .leadership { background: var(--off-white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    .team-card {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .team-card:hover { box-shadow: 0 12px 40px rgba(13, 31, 53, 0.08); }
+    .team-photo {
+      height: 340px;
+      background: #c8cdd4;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+    }
+    .chris-photo img { object-position: center 8%; }
+    .mike-photo img { object-position: center 20%; }
+    .team-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(13, 31, 53, 0.18) 100%);
+      pointer-events: none;
+    }
+    .team-info {
+      padding: 2rem 2.2rem 2.2rem;
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .cta-section {
+      background: var(--navy);
+      padding: 110px 6vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184, 150, 106, 0.05) 0%, transparent 70%);
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .cta-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: #f0ece6;
+      margin-bottom: 1.5rem;
+    }
+    .cta-sub {
+      color: #b9c4d0;
+      margin-bottom: 3rem;
+    }
+    .cta-rule {
+      width: 50px;
+      height: 1px;
+      background: rgba(184, 150, 106, 0.45);
+      margin: 0 auto 3rem;
+    }
+
+    .contact-form {
+      margin-top: 2.8rem;
+      text-align: left;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f0ece6;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 1rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(138, 154, 170, 0.55);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .form-group select option {
+      background: var(--navy);
+      color: #f0ece6;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-submit {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .form-note {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(138, 154, 170, 0.7);
+      letter-spacing: 0.04em;
+    }
+    .form-success {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(184, 150, 106, 0.3);
+      background: rgba(184, 150, 106, 0.06);
+    }
+
+    footer {
+      background: #09182a;
+      padding: 3rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(240, 236, 230, 0.7);
+      letter-spacing: 0.04em;
+    }
+    .footer-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .footer-contact {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(138, 154, 170, 0.7);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-contact:hover { color: var(--gold-light); }
+    .footer-copy {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(138, 154, 170, 0.45);
+      margin-top: 0.3rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .services-grid,
+      .why-layout,
+      .who-layout,
+      .team-grid { grid-template-columns: 1fr; }
+
+      .pillars { grid-template-columns: 1fr; }
+      .pillar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .pillar:last-child { border-bottom: none; }
+
+      .nav-links { display: none; }
+      .ev-divider { display: none; }
+
+      .hero {
+        padding: 118px 6vw 60px;
+      }
+      .hero h1 {
+        font-size: clamp(2.7rem, 10vw, 3.8rem);
+        line-height: 1.1;
+      }
+      .hero-sub {
+        font-size: 1.12rem;
+        line-height: 1.8;
+        max-width: 100%;
+      }
+      h2.section-title {
+        font-size: clamp(2.2rem, 8vw, 2.9rem);
+        line-height: 1.18;
+      }
+      .service-number {
+        font-size: 3rem;
+        color: rgba(184, 137, 51, 0.5);
+      }
+      .pillar-number {
+        font-size: 3.6rem;
+        color: rgba(184, 137, 51, 0.46);
+      }
+      .team-info,
+      .service-card,
+      .pillar,
+      .profile-card {
+        padding: 1.75rem;
+      }
+      .btn-primary,
+      .btn-submit,
+      .btn-outline-light,
+      .nav-cta {
+        font-size: 0.84rem;
+        padding: 1rem 1.6rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-form { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .form-submit { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 540px) {
+      .section-inner { padding: 72px 5vw; }
+      .ev-band { padding: 2rem; }
+      .nav-cta { padding: 0.8rem 1rem; }
+      .hero-actions { gap: 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-logo">
     <span class="nav-logo-primary">Nedza Capital Partners</span>
@@ -1163,7 +797,6 @@ h2.section-title {
   <a href="#contact" class="nav-cta">Start a Conversation</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-rule"></div>
   <p class="hero-eyebrow">Nedza Capital Partners · Lower Middle Market M&A</p>
@@ -1175,7 +808,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- WHAT WE DO -->
 <section class="what-we-do" id="what-we-do">
   <div class="section-inner">
     <div class="reveal">
@@ -1234,7 +866,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- WHY NEDZA -->
 <section class="why-nedza" id="why-nedza">
   <div class="section-inner">
     <div class="reveal">
@@ -1297,7 +928,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- WHO WE WORK WITH -->
 <section class="who-we-work" id="who-we-work">
   <div class="section-inner">
     <div class="reveal">
@@ -1351,7 +981,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- APPROACH -->
 <section class="approach" id="approach">
   <div class="section-inner">
     <div class="reveal">
@@ -1386,7 +1015,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- LEADERSHIP -->
 <section class="leadership" id="leadership">
   <div class="section-inner">
     <div class="reveal">
@@ -1422,7 +1050,6 @@ h2.section-title {
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-inner reveal">
     <p class="cta-eyebrow">Start a Conversation</p>
@@ -1478,42 +1105,38 @@ h2.section-title {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-logo">Nedza Capital Partners</div>
     <div class="footer-tagline" style="margin-top: 0.4rem;">Built by entrepreneurs. Advising entrepreneurs.</div>
   </div>
   <div class="footer-right">
-    <a href="/cdn-cgi/l/email-protection#91f2f9e3f8e2d1fff4f5ebf0f2f0e1f8e5f0fdbff2fefc" class="footer-contact"><span class="__cf_email__" data-cfemail="07646f756e74476962637d666466776e73666b2964686a">[email&#160;protected]</span></a>
+    <a href="mailto:info@nedzacapital.com" class="footer-contact">info@nedzacapital.com</a>
     <span class="footer-copy">&copy; 2025 Nedza Capital Partners. All rights reserved.</span>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   document.documentElement.classList.add('js');
 
-  // Nav scroll shadow
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
+    entries.forEach((e) => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
         observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+  reveals.forEach((el) => observer.observe(el));
 
-  // Smooth anchor scroll
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
