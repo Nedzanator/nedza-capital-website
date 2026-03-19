@@ -924,9 +924,27 @@
     .ev-band { padding: 2rem; }
     .section-inner { padding: 72px 5vw; }
   }
-  /* Readability patch */
+  /* Stronger readability + stronger gold accents */
+
 body {
-  font-size: 18px;
+  font-size: 19px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5.6rem);
+  line-height: 1.08;
+}
+
+.hero-sub {
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: #b9c4d0;
+  max-width: 620px;
+}
+
+h2.section-title {
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+  line-height: 1.16;
 }
 
 .body-text,
@@ -937,14 +955,9 @@ body {
 .team-bio,
 .cta-sub,
 .form-success p {
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.hero-sub {
-  font-size: 1rem;
-  line-height: 1.8;
-  max-width: 560px;
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: #33475b;
 }
 
 .section-label,
@@ -960,43 +973,111 @@ body {
 .nav-links a,
 .nav-cta,
 .hero-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+}
+
+.nav-logo-primary {
+  font-size: 1.5rem;
+}
+
+.nav-logo-sub {
+  font-size: 0.68rem;
+}
+
+.btn-primary,
+.btn-submit,
+.btn-outline-light,
+.nav-cta {
+  font-size: 0.78rem;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select,
 .footer-contact {
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .form-note {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* stronger gold */
+.section-label,
+.cta-eyebrow,
+.team-title,
+.service-name,
+.pillar-name,
+.profile-card-title,
+.hero-eyebrow,
+.nav-logo-sub,
+.ev-label {
+  color: #a97b2d;
+}
+
+.hero h1 em,
+.quote-text,
+.diff-icon svg {
+  color: #b88933;
+  stroke: #b88933;
+}
+
+.hero-rule,
+.section-label::after,
+.client-bullets li::before,
+.pillar-accent,
+.scroll-line {
+  background: #b88933;
+}
+
+.diff-icon {
+  border-color: #b88933;
+}
+
+.service-number {
+  color: rgba(184, 137, 51, 0.42);
+}
+
+.pillar-number {
+  color: rgba(184, 137, 51, 0.38);
+}
+
+.ev-value {
+  color: #f6efe5;
+}
+
+.ev-label {
+  color: #c39a52;
+}
+
+.metric-value {
+  color: #f3ece2;
 }
 
 @media (max-width: 768px) {
   body {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .hero {
-    padding: 110px 6vw 56px;
+    padding: 118px 6vw 60px;
   }
 
   .hero h1 {
-    font-size: clamp(2.4rem, 9vw, 3.4rem);
-    line-height: 1.12;
+    font-size: clamp(2.7rem, 10vw, 3.8rem);
+    line-height: 1.1;
   }
 
   .hero-sub {
-    font-size: 1.05rem;
-    line-height: 1.75;
+    font-size: 1.12rem;
+    line-height: 1.8;
     max-width: 100%;
   }
 
   h2.section-title {
-    font-size: clamp(2rem, 7vw, 2.6rem);
-    line-height: 1.2;
+    font-size: clamp(2.2rem, 8vw, 2.9rem);
+    line-height: 1.18;
   }
 
   .body-text,
@@ -1007,8 +1088,8 @@ body {
   .team-bio,
   .cta-sub,
   .form-success p {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 1.06rem;
+    line-height: 1.8;
   }
 
   .section-label,
@@ -1024,8 +1105,29 @@ body {
   .nav-links a,
   .nav-cta,
   .hero-eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     letter-spacing: 0.12em;
+  }
+
+  .service-number {
+    font-size: 3rem;
+    color: rgba(184, 137, 51, 0.5);
+  }
+
+  .pillar-number {
+    font-size: 3.6rem;
+    color: rgba(184, 137, 51, 0.46);
+  }
+
+  .team-name {
+    font-size: 1.85rem;
+  }
+
+  .team-info,
+  .service-card,
+  .pillar,
+  .profile-card {
+    padding: 1.75rem;
   }
 
   .form-group input,
@@ -1039,19 +1141,8 @@ body {
   .btn-submit,
   .btn-outline-light,
   .nav-cta {
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     padding: 1rem 1.6rem;
-  }
-
-  .team-info,
-  .service-card,
-  .pillar,
-  .profile-card {
-    padding: 1.5rem;
-  }
-
-  .team-photo {
-    height: 300px;
   }
 }
 </style>
