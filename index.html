@@ -503,8 +503,8 @@
     .leadership { background: var(--off-white); }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
       margin-top: 4rem;
     }
     .team-card {
@@ -528,6 +528,7 @@
     }
     .chris-photo img { object-position: center center; }
     .mike-photo img { object-position: center 20%; }
+    .ty-photo img { object-position: center 18%; }
     .team-photo-overlay {
       position: absolute;
       inset: 0;
@@ -711,6 +712,10 @@
     .js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    @media (max-width: 1200px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 860px) {
@@ -1044,6 +1049,18 @@
           <div class="team-name">Mike Hill</div>
           <div class="team-title">Senior Advisor</div>
           <p class="team-bio">Mike brings decades of experience as an operator, strategic acquirer, and board advisor to lower middle-market companies. His career spans multiple industries and transaction types — from growth-stage acquisitions to complex ownership transitions involving family businesses and multi-generational leadership.<br><br>He has managed the integration of acquired businesses, led management buyouts, and advised business owners through every stage of the transaction lifecycle. Mike's operational depth gives founders a credible, experienced voice at every point in the process — from initial positioning through negotiation and close.</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal" style="transition-delay: 0.3s;">
+        <div class="team-photo ty-photo">
+          <img src="ty-smith.jpg" alt="Ty Smith">
+          <div class="team-photo-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Ty Smith</div>
+          <div class="team-title">Associate | Origination &amp; Business Development</div>
+          <p class="team-bio">Ty Smith is an entrepreneur and business development professional focused on founder relationships, strategic outreach, and opportunity origination for Nedza Capital. He works closely with business owners throughout the early stages of the engagement process, helping identify qualified opportunities and supporting transaction execution across active mandates.<br><br>Ty brings a relationship-driven approach to the firm, with experience spanning entrepreneurship, operations, procurement, and business development. His background includes working directly with executives, coordinating large-scale projects, and building long-term client relationships across multiple industries.<br><br>Prior to joining Nedza Capital, Ty founded and later exited BrideLights, a specialty event services company serving clients across the Southeast. Through the growth and sale of the business, he gained firsthand experience as an owner-operator, providing him with practical insight into the challenges founders face while building and transitioning a company.<br><br>Ty has also held leadership and operational roles with organizations including National Custom, Priority Payment Systems, and Christ Fellowship Church, where he helped scale digital audience engagement and media operations.<br><br>He earned a Bachelor of Business Administration from the University of North Georgia.</p>
         </div>
       </div>
     </div>
