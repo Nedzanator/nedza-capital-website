@@ -1,0 +1,19 @@
+name: Site change
+description: Content, design, or copy update for nedza-capital-website
+title: "[site] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What should change?
+      description: Page, section, or behavior to update.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Done when
+      description: How we know the change is complete.
+    validations:
+      required: true
