@@ -16,7 +16,7 @@ One-time and daily checklist for parallel Codex, Gemini, Claude, Jules, and Curs
 1. Open [jules.google.com](https://jules.google.com) and sign in with your Google account.
 2. **Connect GitHub** → grant access to **Nedzanator/nedza-capital-website**.
 3. In GitHub repo **Settings → Integrations → Applications**, confirm the Jules app is allowed.
-4. Label **`jules`** exists on the repo (create via `.\scripts\setup-jules.ps1` if missing).
+4. **Label `jules`** — on this repo already. To recreate it or open Jules/GitHub setup tabs: `.\scripts\setup-jules.ps1`. Add the label to an issue (or use the **Jules task** issue template) to start Jules.
 5. Enable **browser notifications** in Jules so async tasks can finish while you work elsewhere.
 
 ## 3. Local CLIs (verify once)
