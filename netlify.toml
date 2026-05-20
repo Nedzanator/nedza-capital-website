@@ -1,5 +1,7 @@
-# Production site (www.nedzacapital.com) is hosted on Netlify.
-# Link this repo in Netlify: Site settings → Build & deploy → Continuous deployment.
+# Production: Netlify team slug `chris-o1desba` (UI: Nedza Capital Pro), site `nedza-capital`.
+# Site ID (for NETLIFY_SITE_ID): 9ee0269f-e76e-40e7-ac8f-7cdeba577f71
+# Custom domain: https://www.nedzacapital.com
+# Do not deploy to the free-team site `statuesque-axolotl-fb22b5` (92340366-6e0e-4b88-9bd4-6cfdae97ca28).
 [build]
   publish = "."
   command = ""

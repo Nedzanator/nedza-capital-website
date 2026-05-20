@@ -15,7 +15,17 @@ Then visit http://localhost:8080
 
 ## Deployment
 
-**Production** (`https://www.nedzacapital.com`) is served by **Netlify** (DNS is on Netlify). Pushing to `main` updates GitHub only until Netlify deploys that commit.
+**Production** (`https://www.nedzacapital.com`) is served by **Netlify** on team slug **`chris-o1desba`** (Netlify UI: **Nedza Capital Pro**). Pushing to `main` updates GitHub only until that site deploys.
+
+| Netlify | Value |
+| --- | --- |
+| Team slug | `chris-o1desba` ([team builds](https://app.netlify.com/teams/chris-o1desba/builds)) |
+| Site name | `nedza-capital` |
+| Site ID | `9ee0269f-e76e-40e7-ac8f-7cdeba577f71` |
+| Custom domain | `www.nedzacapital.com` |
+| GitHub repo | `Nedzanator/nedza-capital-website` (`main`) |
+
+**Wrong site (do not use for production):** free-team project `statuesque-axolotl-fb22b5` (`92340366-6e0e-4b88-9bd4-6cfdae97ca28`) — not connected to `www.nedzacapital.com`.
 
 | Piece | Purpose |
 | --- | --- |
@@ -29,8 +39,9 @@ Then visit http://localhost:8080
 
 Pick one:
 
-1. **Netlify UI** — [app.netlify.com](https://app.netlify.com) → your site → **Deploys** → **Trigger deploy** → **Deploy site** (ensure the site is linked to `Nedzanator/nedza-capital-website`, branch `main`).
-2. **GitHub Actions** — In Netlify: **User settings → Applications → Personal access tokens**. In GitHub: repo **Settings → Secrets → Actions** → add `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` (Site settings → General → Site ID). Push to `main` or run **Deploy to Netlify** workflow manually.
+1. **Netlify UI** — [nedza-capital deploys](https://app.netlify.com/projects/nedza-capital/deploys) on team **chris-o1desba** → **Trigger deploy** → **Deploy site** (linked to `Nedzanator/nedza-capital-website`, branch `main`). Approve pending production deploys from Git contributors if builds are stuck in review.
+2. **CLI** — `npx netlify-cli link --id 9ee0269f-e76e-40e7-ac8f-7cdeba577f71` then `npx netlify-cli deploy --prod --dir .`
+3. **GitHub Actions** — Repo **Settings → Secrets → Actions**: `NETLIFY_AUTH_TOKEN` (Netlify personal access token) and `NETLIFY_SITE_ID` = `9ee0269f-e76e-40e7-ac8f-7cdeba577f71`. Push to `main` or run **Deploy to Netlify** manually.
 
 ### GitHub Pages (optional alternate host)
 
