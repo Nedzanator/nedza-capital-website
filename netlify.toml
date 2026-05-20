@@ -1,0 +1,5 @@
+# Production site (www.nedzacapital.com) is hosted on Netlify.
+# Link this repo in Netlify: Site settings → Build & deploy → Continuous deployment.
+[build]
+  publish = "."
+  command = ""
