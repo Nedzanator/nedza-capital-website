@@ -55,4 +55,5 @@ _Status: `Queued` · `In progress` · `Review` · `Done` · `Blocked`_
 - GitHub: `Nedzanator/nedza-capital-website` — push `AGENTS.md` and `.agents/` so Jules sees repo rules.
 - Production deploy: Netlify team `chris-o1desba`, site `nedza-capital` (details in `README.md`).
 - CI on PR: validates required HTML files; no `TODO` in `index.html`.
-- Issue automation: add GitHub label **`jules`** to start a Jules task from an issue (optional).
+- Issue automation: label **`jules`** on an issue (or use **Jules task** issue template) — Jules comments and opens a PR when the app is connected.
+- Setup script: `.\scripts\setup-jules.ps1`

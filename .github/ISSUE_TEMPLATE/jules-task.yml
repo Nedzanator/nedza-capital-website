@@ -1,0 +1,31 @@
+name: Jules task
+description: Scoped async task for Jules (adds jules label automatically)
+title: "[jules] "
+labels: ["jules"]
+body:
+  - type: markdown
+    value: |
+      Jules will pick up this issue when the **jules** label is applied and the [Jules GitHub app](https://jules.google.com) has access to this repo.
+      Keep the scope small: specific files and clear acceptance criteria.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Files / area
+      description: "Only touch these paths (e.g. index.html hero section, thank-you.html)"
+      placeholder: "index.html — team section copy only"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Done when
+      description: How we know the task is complete (CI must pass).
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra context
+      description: Optional mockups, links, or constraints.
+    validations:
+      required: false
