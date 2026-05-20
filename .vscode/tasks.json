@@ -1,0 +1,122 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Agents: Start Codex Executor",
+      "type": "shell",
+      "command": "codex",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "group": "agents",
+        "reveal": "always",
+        "focus": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Agents: Start Gemini Scout",
+      "type": "shell",
+      "command": "gemini --skip-trust --approval-mode plan",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "group": "agents",
+        "reveal": "always",
+        "focus": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "Agents: Start Claude Reviewer",
+      "type": "shell",
+      "command": "claude",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "group": "agents",
+        "reveal": "always",
+        "focus": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "Agents: Open Jules",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "Start-Process 'https://jules.google.com'"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Agents: New Worktree",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/scripts/new-agent-worktree.ps1",
+        "-Name",
+        "${input:worktreeName}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Site: Local Preview",
+      "type": "shell",
+      "command": "python",
+      "args": ["-m", "http.server", "8080"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "group": "site",
+        "reveal": "always",
+        "focus": false
+      }
+    },
+    {
+      "label": "Agents: Start All",
+      "dependsOn": [
+        "Agents: Start Gemini Scout",
+        "Agents: Start Codex Executor",
+        "Agents: Start Claude Reviewer"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "worktreeName",
+      "type": "promptString",
+      "description": "Worktree name (e.g. hero-update, jules-copy)",
+      "default": "parallel-1"
+    }
+  ]
+}

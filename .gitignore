@@ -140,3 +140,12 @@ vite.config.ts.timestamp-*
 
 # Local Netlify folder
 .netlify
+
+# Multi-agent coordination (scratch only; commit .agents/*.md)
+.agents/tmp/
+
+# Parallel agent worktrees
+.worktrees/
+
+# Local image crop experiments
+_crop_test/

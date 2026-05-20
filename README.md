@@ -60,3 +60,13 @@ Preview URL (after Pages is enabled): `https://nedzanator.github.io/nedza-capita
 - `main` — production; merges deploy via GitHub Actions.
 - Feature branches — open a PR; CI runs automatically.
 
+## Multi-agent coordination
+
+Parallel AI agents (Codex, Gemini, Claude, Jules, Cursor) use:
+
+- [`AGENTS.md`](AGENTS.md) — roles and rules
+- [`.agents/COORDINATION.md`](.agents/COORDINATION.md) — claim tasks before editing
+- [`.agents/SETUP.md`](.agents/SETUP.md) — one-time Jules/GitHub setup
+
+New parallel worktree: `.\scripts\new-agent-worktree.ps1 -Name <name>`
+
