@@ -1,3 +1,24 @@
 {
-    "python.languageServer": "None"
+  "terminal.integrated.envFile": "${workspaceFolder}/.env",
+  "python.languageServer": "None",
+  "python.analysis.diagnosticMode": "off",
+  "python.analysis.typeCheckingMode": "off",
+  "python.terminal.activateEnvironment": false,
+  "cursorpyright.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.includeLanguages": {
+    "html": "html"
+  },
+  "files.associations": {
+    "*.html": "html"
+  },
+  "markdownlint.config": {
+    "default": true,
+    "MD013": false
+  },
+  "prettier.experimentalTernaries": true
 }

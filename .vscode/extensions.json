@@ -1,5 +1,13 @@
 {
-    "recommendations": [
-        "tazztone.jules-vscode"
-    ]
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "davidanson.vscode-markdownlint",
+    "ms-edgedevtools.vscode-edge-devtools",
+    "serkan-ozal.browser-devtools-mcp-vscode",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    "tazztone.jules-vscode"
+  ],
+  "unwantedRecommendations": ["hirokimukai.jules-extension", "knisterpeter.vscode-github"]
 }
