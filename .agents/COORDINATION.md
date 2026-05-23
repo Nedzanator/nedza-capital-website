@@ -40,7 +40,7 @@ Setup guide: `.agents/SETUP.md` · Jules templates: `.agents/PROMPT_JULES.md` ·
 
 | Agent | Task | Files / Area | Worktree / PR | Status | Last Updated |
 | --- | --- | --- | --- | --- | --- |
-| — | — | — | — | — | — |
+| Cursor | Chris headshot 480×600 center-crop | `chris-nedza.png` | main workspace | Done | 2026-05-23 |
 
 _Status: `Queued` · `In progress` · `Review` · `Done` · `Blocked`_
 
