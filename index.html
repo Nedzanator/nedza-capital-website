@@ -24,7 +24,12 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    img { max-width: 100%; height: auto; }
     body {
       font-family: 'Montserrat', sans-serif;
       background: var(--off-white);
@@ -502,31 +507,37 @@
 
     .leadership { background: var(--off-white); }
     .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 2.5rem;
       margin-top: 4rem;
-      align-items: start;
     }
     .team-card {
       display: flex;
-      flex-direction: column;
-      height: 100%;
+      flex-direction: row;
+      align-items: flex-start;
       border: 1px solid var(--border);
       overflow: hidden;
       transition: box-shadow 0.3s;
+      background: var(--off-white);
     }
     .team-card:hover { box-shadow: 0 12px 40px rgba(13, 31, 53, 0.08); }
     .team-photo {
+      flex: 0 0 280px;
+      width: 280px;
       aspect-ratio: 480 / 600;
-      width: 100%;
+      height: auto;
+      align-self: flex-start;
       background: #c8cdd4;
       position: relative;
       overflow: hidden;
     }
     .team-photo img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      max-width: 100%;
       object-fit: cover;
       display: block;
       filter: grayscale(15%) contrast(1.05);
@@ -541,7 +552,12 @@
       pointer-events: none;
     }
     .team-info {
+      flex: 1;
+      min-width: 0;
       padding: 2rem 2.2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .team-name {
       font-family: 'Cormorant Garamond', serif;
@@ -722,8 +738,12 @@
     @media (max-width: 860px) {
       .services-grid,
       .why-layout,
-      .who-layout,
-      .team-grid { grid-template-columns: 1fr; }
+      .who-layout { grid-template-columns: 1fr; }
+
+      .team-photo {
+        flex: 0 0 220px;
+        width: 220px;
+      }
 
       .pillars { grid-template-columns: 1fr; }
       .pillar {
@@ -774,17 +794,60 @@
       }
     }
 
+    @media (max-width: 720px) {
+      .team-card { flex-direction: column; }
+      .team-photo {
+        flex: none;
+        width: 100%;
+      }
+    }
+
     @media (max-width: 600px) {
       .contact-form { grid-template-columns: 1fr; }
       .form-group.full { grid-column: 1; }
       .form-submit { flex-direction: column; align-items: flex-start; }
+      .quote-text { font-size: clamp(1.35rem, 5vw, 1.7rem); }
     }
 
     @media (max-width: 540px) {
+      body { font-size: 17px; }
       .section-inner { padding: 72px 5vw; }
       .ev-band { padding: 2rem; }
-      .nav-cta { padding: 0.8rem 1rem; }
+      .nav-cta {
+        padding: 0.75rem 1.1rem;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .nav-logo { min-height: 44px; justify-content: center; }
       .hero-actions { gap: 1.25rem; }
+      .btn-primary,
+      .btn-submit,
+      .btn-outline-light {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        min-height: 44px;
+        font-size: 16px;
+      }
+      .form-group textarea { min-height: 120px; }
+      .footer-contact {
+        display: inline-block;
+        min-height: 44px;
+        line-height: 44px;
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-right { text-align: left; }
+      .team-name { font-size: clamp(1.5rem, 6vw, 1.85rem); }
+      .team-info { padding: 1.5rem 1.25rem 1.75rem; }
     }
   </style>
 </head>
