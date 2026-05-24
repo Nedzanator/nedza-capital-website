@@ -503,18 +503,23 @@
     .leadership { background: var(--off-white); }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.5rem;
       margin-top: 4rem;
+      align-items: start;
     }
     .team-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       border: 1px solid var(--border);
       overflow: hidden;
       transition: box-shadow 0.3s;
     }
     .team-card:hover { box-shadow: 0 12px 40px rgba(13, 31, 53, 0.08); }
     .team-photo {
-      height: 340px;
+      aspect-ratio: 480 / 600;
+      width: 100%;
       background: #c8cdd4;
       position: relative;
       overflow: hidden;
@@ -712,10 +717,6 @@
     .js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    @media (max-width: 1200px) {
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 860px) {
