@@ -42,7 +42,7 @@ Setup guide: `.agents/SETUP.md` · Jules templates: `.agents/PROMPT_JULES.md` ·
 | --- | --- | --- | --- | --- | --- |
 | Cursor | Mike & Ty headshots 480×600 | `mike-hill.jpg`, `ty-smith.jpg` | main workspace | Done | 2026-05-23 |
 | Cursor | Chris headshot 480×600 center-crop | `chris-nedza.png` | main workspace | Done | 2026-05-23 |
-| Cursor | Leadership horizontal row layout | `index.html` | main workspace | Done | 2026-05-23 |
+| Cursor | Leadership horizontal row layout + mobile audit | `index.html` | main workspace | Done | 2026-05-23 |
 
 _Status: `Queued` · `In progress` · `Review` · `Done` · `Blocked`_
 
