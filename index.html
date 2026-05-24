@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nedza Capital Partners advises founders of lower middle-market businesses on strategic sales, recapitalizations, and liquidity events." />
   <title>Nedza Capital Partners — Built by Entrepreneurs. Advising Entrepreneurs.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +27,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 72px;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
@@ -91,6 +93,81 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--navy); }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 200;
+      padding: 0.75rem 1.25rem;
+      background: var(--navy);
+      color: var(--off-white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .nav-toggle-icon,
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle-icon {
+      position: relative;
+    }
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+    .nav-toggle-icon::before { top: -6px; }
+    .nav-toggle-icon::after { top: 6px; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon { background: transparent; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 72px 0 0;
+      background: rgba(13, 31, 53, 0.35);
+      z-index: 90;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .nav-backdrop.is-visible { display: block; }
+
+    .nav-panel { display: contents; }
 
     .nav-cta {
       font-size: 0.82rem;
@@ -567,6 +644,7 @@
       margin-bottom: 0.25rem;
       line-height: 1.2;
     }
+    .team-title { margin-bottom: 1rem; }
 
     .cta-section {
       background: var(--navy);
@@ -644,6 +722,12 @@
     .form-group select:focus {
       border-color: var(--gold);
       background: rgba(255, 255, 255, 0.07);
+    }
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 2px;
     }
     .form-group select option {
       background: var(--navy);
@@ -735,6 +819,55 @@
       transform: translateY(0);
     }
 
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+    .nav-links a:focus-visible,
+    .nav-cta:focus-visible,
+    .nav-logo:focus-visible,
+    .btn-primary:focus-visible,
+    .btn-submit:focus-visible,
+    .btn-outline-light:focus-visible,
+    .footer-contact:focus-visible {
+      outline-color: var(--gold);
+    }
+    .btn-primary:focus-visible,
+    .btn-submit:focus-visible {
+      outline-color: var(--navy);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-rule,
+      .hero-eyebrow,
+      .hero h1,
+      .hero-sub,
+      .hero-actions {
+        animation: none;
+        opacity: 1;
+      }
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .btn-primary,
+      .btn-submit,
+      .btn-outline-light,
+      .nav-cta,
+      .nav-toggle-icon,
+      .nav-toggle-icon::before,
+      .nav-toggle-icon::after,
+      .nav-panel {
+        transition: none;
+      }
+      .btn-primary:hover,
+      .btn-submit:hover {
+        transform: none;
+      }
+    }
+
     @media (max-width: 860px) {
       .services-grid,
       .why-layout,
@@ -753,6 +886,39 @@
       .pillar:last-child { border-bottom: none; }
 
       .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .nav-panel {
+        display: block;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        z-index: 95;
+        background: rgba(253, 252, 251, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 12px 32px rgba(13, 31, 53, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-panel.is-open { max-height: 320px; }
+
+      .nav-panel .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 6vw 1.25rem;
+        list-style: none;
+      }
+      .nav-panel .nav-links a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.5rem 0;
+      }
+
       .ev-divider { display: none; }
 
       .hero {
@@ -853,20 +1019,28 @@
 </head>
 <body>
 
-<nav id="main-nav">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav id="main-nav" aria-label="Main navigation">
   <a href="#" class="nav-logo">
     <span class="nav-logo-primary">Nedza Capital Partners</span>
     <span class="nav-logo-sub">M&A Advisory</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#what-we-do">Services</a></li>
-    <li><a href="#why-nedza">Our Approach</a></li>
-    <li><a href="#leadership">Leadership</a></li>
-  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation menu">
+    <span class="nav-toggle-icon" aria-hidden="true"></span>
+  </button>
+  <div class="nav-panel" id="nav-panel">
+    <ul class="nav-links">
+      <li><a href="#what-we-do">Services</a></li>
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+    </ul>
+  </div>
   <a href="#contact" class="nav-cta">Start a Conversation</a>
 </nav>
+<button type="button" class="nav-backdrop" id="nav-backdrop" aria-label="Close navigation menu" tabindex="-1"></button>
 
-<section class="hero" id="home">
+<section class="hero" id="main-content">
   <div class="hero-rule"></div>
   <p class="hero-eyebrow">Nedza Capital Partners · Lower Middle Market M&A</p>
   <h1>Built by <em>entrepreneurs.</em><br>Advising entrepreneurs.</h1>
@@ -1094,7 +1268,7 @@
     <div class="team-grid">
       <div class="team-card reveal" style="transition-delay: 0.1s;">
         <div class="team-photo chris-photo">
-          <img src="chris-nedza.png" alt="Chris Nedza">
+          <img src="chris-nedza.jpg" alt="Chris Nedza" loading="lazy">
           <div class="team-photo-overlay"></div>
         </div>
         <div class="team-info">
@@ -1106,7 +1280,7 @@
 
       <div class="team-card reveal" style="transition-delay: 0.2s;">
         <div class="team-photo mike-photo">
-          <img src="mike-hill.jpg" alt="Mike Hill">
+          <img src="mike-hill.jpg" alt="Mike Hill" loading="lazy">
           <div class="team-photo-overlay"></div>
         </div>
         <div class="team-info">
@@ -1118,17 +1292,13 @@
 
       <div class="team-card reveal" style="transition-delay: 0.3s;">
         <div class="team-photo ty-photo">
-          <img src="ty-smith.jpg" alt="Ty Smith">
+          <img src="ty-smith.jpg" alt="Ty Smith" loading="lazy">
           <div class="team-photo-overlay"></div>
         </div>
         <div class="team-info">
           <div class="team-name">Ty Smith</div>
           <div class="team-title">Associate | Origination &amp; Business Development</div>
-          <p class="team-bio">Ty focuses on founder relationships, strategic outreach, and opportunity origination for Nedza Capital. He works closely with business owners during the early stages of the engagement process, helping identify qualified opportunities and supporting transaction execution across active mandates.
-
-Prior to joining Nedza Capital, Ty founded and later exited BrideLights, a specialty event services company serving clients across the Southeast. Through the growth and sale of the business, he gained firsthand experience as an owner-operator, giving him practical insight into the challenges founders face while building and transitioning a company.
-
-Ty brings a relationship-driven approach to the firm, combining entrepreneurial experience with a background in business development, operations, and client engagement across multiple industries.</p>
+          <p class="team-bio">Ty focuses on founder relationships, strategic outreach, and opportunity origination for Nedza Capital. He works closely with business owners during the early stages of the engagement process, helping identify qualified opportunities and supporting transaction execution across active mandates.<br><br>Prior to joining Nedza Capital, Ty founded and later exited BrideLights, a specialty event services company serving clients across the Southeast. Through the growth and sale of the business, he gained firsthand experience as an owner-operator, giving him practical insight into the challenges founders face while building and transitioning a company.<br><br>Ty brings a relationship-driven approach to the firm, combining entrepreneurial experience with a background in business development, operations, and client engagement across multiple industries.</p>
         </div>
       </div>
     </div>
@@ -1148,17 +1318,17 @@ Ty brings a relationship-driven approach to the firm, combining entrepreneurial 
 
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="First and last name" required>
+        <input type="text" id="name" name="name" placeholder="First and last name" autocomplete="name" required>
       </div>
 
       <div class="form-group">
         <label for="company">Company</label>
-        <input type="text" id="company" name="company" placeholder="Company name" required>
+        <input type="text" id="company" name="company" placeholder="Company name" autocomplete="organization" required>
       </div>
 
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
       </div>
 
       <div class="form-group">
@@ -1197,7 +1367,7 @@ Ty brings a relationship-driven approach to the firm, combining entrepreneurial 
   </div>
   <div class="footer-right">
     <a href="mailto:info@nedzacapital.com" class="footer-contact">info@nedzacapital.com</a>
-    <span class="footer-copy">&copy; 2025 Nedza Capital Partners. All rights reserved.</span>
+    <span class="footer-copy">&copy; 2026 Nedza Capital Partners. All rights reserved.</span>
   </div>
 </footer>
 
@@ -1205,6 +1375,36 @@ Ty brings a relationship-driven approach to the firm, combining entrepreneurial 
   document.documentElement.classList.add('js');
 
   const nav = document.getElementById('main-nav');
+  const navToggle = document.getElementById('nav-toggle');
+  const navPanel = document.getElementById('nav-panel');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  function setNavOpen(isOpen) {
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    navPanel.classList.toggle('is-open', isOpen);
+    navBackdrop.classList.toggle('is-visible', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) {
+      const firstLink = navPanel.querySelector('a');
+      if (firstLink) firstLink.focus();
+    } else {
+      navToggle.focus();
+    }
+  }
+
+  navToggle.addEventListener('click', () => {
+    setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  navBackdrop.addEventListener('click', () => setNavOpen(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      setNavOpen(false);
+    }
+  });
+
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
@@ -1222,10 +1422,15 @@ Ty brings a relationship-driven approach to the firm, combining entrepreneurial 
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const href = link.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        if (navToggle.getAttribute('aria-expanded') === 'true') {
+          setNavOpen(false);
+        }
+        target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       }
     });
   });
